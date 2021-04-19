@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        int l=0,row=n-1,k=1;
+        vector<vector<int>> a(n,vector<int>(n,0));
+        while(k<=n*n)
+        {
+            for(int j=l;j<=row;j++)
+                a[l][j]=k++;
+            if(k>n*n)
+                return a;
+            for(int i=l+1;i<=row;i++)
+                a[i][row]=k++;
+            for(int j=row-1;j>=l;j--)
+                a[row][j]=k++;
+            for(int i=row-1;i>l;i--)
+                a[i][l]=k++;
+            l++;
+            row--;
+        }
+        return a;
+    }
+};
